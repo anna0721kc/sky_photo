@@ -1,0 +1,20 @@
+<!--管理者側/会員詳細-->
+<h3>
+  <%= @customer.name %>さん
+</h3>
+<table class="table table-borderless">
+  <tbody>
+    <tr>
+      <td>ユーザー名</td>
+      <td><%= @customer.name %></td>
+    </tr>
+    <tr>
+      <td>メールアドレス</td>
+      <td><%= @customer.email %></td>
+    </tr>
+    <tr>
+      <td>有効／退会</td>
+      <td><%= @customer.is_deleted ? '有効' : '退会' %></td>
+    </tr>
+  </tbody>
+</table>
