@@ -5,6 +5,10 @@
 <table class="table table-borderless">
   <tbody>
     <tr>
+      <td>会員ＩＤ</td>
+      <td><%= @customer.id %></td>
+    </tr>
+    <tr>
       <td>ユーザー名</td>
       <td><%= @customer.name %></td>
     </tr>
@@ -18,3 +22,5 @@
     </tr>
   </tbody>
 </table>
+
+<%= link_to "編集する", edit_admin_customer_path(@customer.id) %>
