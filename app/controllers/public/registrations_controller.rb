@@ -60,6 +60,30 @@ class Public::RegistrationsController < Devise::RegistrationsController
   #   super(resource)
   # end
   def after_sign_up_path_for(resource)
-    customers_my_page_path
+    customer_path
   end
+
+  def after_update_path_for(resource)
+    edit_customer_registration_path
+  end
+
+  def edit
+    @customer = current_customer
+  end
+
+  def update
+    @customer = current_customer
+    if @customer.update(customer_params)
+      flash[:notice] = "You have updated data successfully"
+      redirect_to customer_path(@customer)
+    else
+      render edit
+    end
+  end
+
+  private
+  def customer_params
+    params.require(:customer).permit(:name, :profile_image)
+  end
+
 end

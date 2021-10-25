@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
     if resource.is_a?(Admin)
       admin_customers_path
     else
-      customers_my_page_path
+      customer_path(@customer.id)
     end
   end
 

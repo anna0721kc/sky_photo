@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  # devise_for :customers
-  # devise_for :admins
   devise_for :customers, controllers: {
   registrations: 'public/registrations',
   sessions: 'public/sessions',
@@ -16,15 +14,15 @@ Rails.application.routes.draw do
     resources :photos, except: [:destroy]
     root to: 'homes#top'
     get '/about' => 'homes#about'
-    get '/customers/my_page' => 'customers#show'
-    get '/customers/edit' => 'customers#edit'
-    patch '/customers/edit' => 'customers#update'
     get '/customers/:id/follow' => 'customers#follow'
     get '/customers/:id/follower' => 'customers#follower'
     get '/customers/unsubscribe' => 'customers#unsubscribe'
     patch '/customers/withdraw' => 'customers#withdraw'
+    # get '/customers/edit' => 'customers#edit'
+    # patch '/customers/edit' => 'customers#update'
     post '/favorites' => 'favorites#create'
     delete '/favorites/:id' => 'favorites#destroy'
+    get '/customers/:id' => 'customers#show',as: 'customer'
   end
 
   namespace :admin do

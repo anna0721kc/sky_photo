@@ -21,4 +21,9 @@ class Admin::CustomersController < ApplicationController
       render edit
     end
   end
+
+  private
+  def customer_params
+    params.require(:customer).permit(:name, :email, :encrypted_password, :is_deleted)
+  end
 end
