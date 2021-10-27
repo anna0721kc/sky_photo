@@ -1,14 +1,50 @@
 // Place all the styles related to the public/homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.container {
-  height: 500px; /* ここの高さはいくつでも構いません */
-  width: 95%;
-}
+
+//topページのcss
 .swiper-slide img {
   height:600px;
   width: 95%;
+  background-size: cover;
 }
+html, body {
+      position: relative;
+      height: 700px;
+    }
+    body {
+      background: #eee;
+      font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      color:#000;
+      margin: 0;
+      padding: 0;
+    }
+    .swiper-container {
+      width: 100%;
+      height: 700px;
+
+    }
+    .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+
+      /* Center slide text vertically */
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      -webkit-align-items: center;
+      align-items: center;
+    }
+
 span {
   position: absolute;/*絶対配置*/
   color: white;
@@ -20,4 +56,10 @@ span {
 .link:hover {
   color :#888888;
   text-decoration: none;
+}
+p {
+ color: white;
+ position: absolute;
+ top:0;
+ padding: 5px;
 }
