@@ -1,26 +1,14 @@
-<!--<div class="swiper-container">-->
-<!--   <div class="swiper-wrapper">-->
-<!--     <div class="swiper-slide"><#%= image_tag("koinobori.jpg") %></div>-->
-<!--     <div class="swiper-slide"><%#= image_tag("kumo.png") %></div>-->
-<!--     <div class="swiper-slide"><%#= image_tag("saiun.jpg") %></div>-->
-<!--   </div>-->
-<!--   <div class="swiper-button-prev"></div>-->
-<!--   <div class="swiper-button-next"></div>-->
-<!--</div>-->
-
-  <!-- Swiper -->
+<!-- Swiper -->
   <div class="swiper-container">
     <div class="swiper-wrapper">
-      <div class="swiper-slide"><%= image_tag("saiun.jpg") %></div>
-      <div class="swiper-slide"><%= image_tag("yuuhi.jfif") %></div>
-      <div class="swiper-slide"><%= image_tag("saiun.jpg") %></div>
-      <div class="swiper-slide"><%= image_tag("yuuhi.jfif") %></div>
-      <div class="swiper-slide"><%= image_tag("yuuhi.jfif") %></div>
-      <div class="swiper-slide"><%= image_tag("yuuhi.jfif") %></div>
-      <div class="swiper-slide"><%= image_tag("yuuhi.jfif") %></div>
-      <div class="swiper-slide"><%= image_tag("yuuhi.jfif") %></div>
-      <div class="swiper-slide"><%= image_tag("yuuhi.jfif") %></div>
-      <div class="swiper-slide"><%= image_tag("yuuhi.jfif") %></div>
+      <div class="swiper-slide"><%= image_tag("image01.jfif") %><span><%= link_to "Enter", photos_path, class: "link" %></span></div>
+      <div class="swiper-slide"><%= image_tag("image11.jpg") %><span><%= link_to "Enter", photos_path, class: "link" %></span></div>
+      <div class="swiper-slide"><%= image_tag("image12.jfif") %><span><%= link_to "Enter", photos_path, class: "link" %></span></div>
+      <div class="swiper-slide"><%= image_tag("image04.jfif") %><span><%= link_to "Enter", photos_path, class: "link" %></span></div>
+      <div class="swiper-slide"><%= image_tag("image05.jfif") %><span><%= link_to "Enter", photos_path, class: "link" %></span></div>
+      <div class="swiper-slide"><%= image_tag("image06.jfif") %><span><%= link_to "Enter", photos_path, class: "link" %></span></div>
+      <div class="swiper-slide"><%= image_tag("image07.jpeg") %><span><%= link_to "Enter", photos_path, class: "link" %></span></div>
+      <div class="swiper-slide"><%= image_tag("image08.png") %><span><%= link_to "Enter", photos_path, class: "link" %></span></div>
     </div>
     <!-- Add Pagination -->
     <div class="swiper-pagination"></div>
@@ -31,12 +19,12 @@
   <!-- Initialize Swiper -->
   <script>
     var swiper = new Swiper('.swiper-container', {
-    //   spaceBetween: 30,
-    //   centeredSlides: true,
-    //   autoplay: {
-    //     delay: 2500,
-    //     disableOnInteraction: false,
-    //   },
+      spaceBetween: 30,
+      effect: "fade",
+      autoplay: {
+        delay: 5000,
+        disableOnInteraction: false,
+      },
       pagination: {
         el: '.swiper-pagination',
         clickable: true,

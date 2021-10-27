@@ -1,3 +1,23 @@
 // Place all the styles related to the public/homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.container {
+  height: 500px; /* ここの高さはいくつでも構いません */
+  width: 95%;
+}
+.swiper-slide img {
+  height:600px;
+  width: 95%;
+}
+span {
+  position: absolute;/*絶対配置*/
+  color: white;
+  font-size:50px;
+}
+.link{
+  color: #000011;
+}
+.link:hover {
+  color :#888888;
+  text-decoration: none;
+}
