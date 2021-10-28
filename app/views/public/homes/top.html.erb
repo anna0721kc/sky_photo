@@ -1,14 +1,45 @@
 <!-- Swiper -->
   <div class="swiper-container">
     <div class="swiper-wrapper">
-      <div class="swiper-slide"><%= image_tag("image01.jfif") %><span><%= link_to "Enter", photos_path, class: "link" %></span></div>
-      <div class="swiper-slide"><%= image_tag("image11.jpg") %><span><%= link_to "Enter", photos_path, class: "link" %></span></div>
-      <div class="swiper-slide"><%= image_tag("image12.jfif") %><span><%= link_to "Enter", photos_path, class: "link" %></span></div>
-      <div class="swiper-slide"><%= image_tag("image04.jfif") %><span><%= link_to "Enter", photos_path, class: "link" %></span></div>
-      <div class="swiper-slide"><%= image_tag("image05.jfif") %><span><%= link_to "Enter", photos_path, class: "link" %></span></div>
-      <div class="swiper-slide"><%= image_tag("image06.jfif") %><span><%= link_to "Enter", photos_path, class: "link" %></span></div>
-      <div class="swiper-slide"><%= image_tag("image07.jpeg") %><span><%= link_to "Enter", photos_path, class: "link" %></span></div>
-      <div class="swiper-slide"><%= image_tag("image08.png") %><span><%= link_to "Enter", photos_path, class: "link" %></span></div>
+      <div class="swiper-slide">
+        <%= image_tag("image01.jfif") %>
+        <%= link_to "Enter", photos_path, class: "link" %>
+      </div>
+      <div class="swiper-slide">
+        <%= image_tag("image11.jpg") %>
+        <%= link_to "Enter", photos_path, class: "link" %>
+      </div>
+
+      <div class="swiper-slide">
+        <%= image_tag("image12.jfif") %>
+        <%= link_to "Enter", photos_path, class: "link" %>
+      </div>
+
+      <div class="swiper-slide">
+        <%= image_tag("image04.jfif") %>
+        <%= link_to "Enter", photos_path, class: "link" %>
+      </div>
+
+      <div class="swiper-slide">
+        <%= image_tag("image05.jfif") %>
+        <%= link_to "Enter", photos_path, class: "link" %>
+      </div>
+
+      <div class="swiper-slide">
+        <%= image_tag("image06.jfif") %>
+        <%= link_to "Enter", photos_path, class: "link" %>
+      </div>
+
+      <div class="swiper-slide">
+        <%= image_tag("image07.jpeg") %>
+        <%= link_to "Enter", photos_path, class: "link" %>
+      </div>
+
+      <div class="swiper-slide">
+        <%= image_tag("image08.png") %>
+        <%= link_to "Enter", photos_path, class: "link" %>
+      </div>
+
     </div>
     <!-- Add Pagination -->
     <div class="swiper-pagination"></div>
@@ -26,7 +57,8 @@
         disableOnInteraction: false,
       },
       pagination: {
-        el: '.swiper-pagination',
+        el: ".swiper-pagination",
+        type: "bullets",
         clickable: true,
       },
       navigation: {

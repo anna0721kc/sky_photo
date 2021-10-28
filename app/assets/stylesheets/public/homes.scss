@@ -2,7 +2,9 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-//topページのcss
+/*============
+topページ
+=============*/
 .swiper-slide img {
   height:600px;
   width: 95%;
@@ -26,6 +28,7 @@ html, body {
 
     }
     .swiper-slide {
+      position: relative;
       text-align: center;
       font-size: 18px;
       background: #fff;
@@ -44,22 +47,31 @@ html, body {
       -webkit-align-items: center;
       align-items: center;
     }
-
-span {
-  position: absolute;/*絶対配置*/
-  color: white;
-  font-size:50px;
-}
 .link{
   color: #000011;
+  position: absolute;/*親要素(swiper-slide)にposition:relative*/
+  color: blue;
+  font-size:50px;
 }
 .link:hover {
   color :#888888;
   text-decoration: none;
 }
-p {
- color: white;
+/*============
+aboutページ
+=============*/
+.about{
+  height: 700px;
+  width: 100%;
+  background-image: image-url('image08.png');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.about-text {
+ color: blue;
  position: absolute;
- top:0;
- padding: 5px;
+ padding: 10px 10px;
+ font-size:30px;
 }

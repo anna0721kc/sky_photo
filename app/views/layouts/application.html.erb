@@ -4,14 +4,80 @@
     <title>SkyPhoto</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
     <header>
-      
-    </header>
-    <%= yield %>
-  </body>
+<!--ロゴ(TOPへリンク)-->
+<div class="rogo">
+<%= link_to root_path do %>
+<%= image_tag 'skyrogo.jpg', size: "200x95" %>
+<% end %>
+</div>
+<!--ロゴ-->
+</header>
+<div id="navArea">
+<nav>
+  <div class="inner">
+    <ul>
+      <% if admin_signed_in? %><!--管理者でログイン-->
+      <%= image_tag 'skyrogo.jpg', size: "190x95" %>
+      <li><%= link_to "ユーザ一覧", admin_customers_path %></li>
+      <li><%= link_to "logout", destroy_admin_session_path, method: :delete %></li>
+
+      <% elsif customer_signed_in? %><!--会員でログインしていたら-->
+      <%= image_tag 'skyrogo.jpg', size: "190x95" %>
+      <li><%= link_to "about", about_path %></li>
+      <li><%= link_to "gallery", photos_path %></li>
+      <li><%= link_to "post", new_photo_path %></li>
+      <li><%= link_to "mypage", customer_path(current_customer) %></li>
+      <li><%= link_to "logout", destroy_customer_session_path, method: :delete %></li>
+
+      <% else %><!--ログイン前の画面を表示-->
+      <%= image_tag 'skyrogo.jpg', size: "190x95" %>
+      <li><%= link_to "about", about_path %></li>
+      <li><%= link_to "gallery", photos_path %></li>
+      <li><%= link_to "signin", new_customer_registration_path %></li>
+      <li><%= link_to "login", new_customer_session_path %></li>
+      <% end %>
+    </ul>
+  </div>
+</nav>
+<!--ボタン-->
+<div class="toggle_btn">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+<div id="mask"></div>
+<!--ボタンここまで-->
+</div>
+<main>
+<%= yield %>
+</main>
+
+<script>
+  (function($) {
+  var $body   = $('body');
+  var $btn   = $('.toggle_btn');
+  var $mask  = $('#mask');
+  var open   = 'open'; // class
+  // menu open close
+  $btn.on( 'click', function() {
+    if ( ! $body.hasClass( open ) ) {
+      $body.addClass( open );
+    } else {
+      $body.removeClass( open );
+    }
+  });
+  // mask close
+  $mask.on('click', function() {
+    $body.removeClass( open );
+  });
+} )(jQuery);
+</script>
+
+</body>
 </html>
