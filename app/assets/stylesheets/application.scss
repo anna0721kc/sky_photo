@@ -21,8 +21,9 @@
 ヘッダー
 ============*/
 .rogo {
-  margin-left: 80px;
+  margin: 10px 0px 0px 80px;
 }
+
 
 /*============
 nav
@@ -141,7 +142,7 @@ nav .inner ul li a:hover {
 =============*/
 #mask {
   display: none;
-  transition: all 0.5s;
+  transition: all 1s;
 }
 .open #mask {
   display: block;
