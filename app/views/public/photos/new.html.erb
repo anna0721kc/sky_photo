@@ -3,30 +3,30 @@
 <h2>new photo</h2>
 </div>
 
-<%= form_with model: [:public, @photo], local:true do |f| %>
+<%= form_with model: @photo, url: photos_path, local:true do |f| %>
 <div class="col-sm-5">
     <table class="table table-borderless">
         <tbody>
             <tr>
                 <td></td>
-                <td></td>
+                <td><%= f.attachment_field :image %></td>
             </tr>
-            
+
             <tr>
-                <td></td>
-                <td></td>
+                <td><%= f.label :撮影場所 %></td>
+                <td><%= f.text_field :address, class: "form-control col-sm-4" %></td>
             </tr>
-            
+
             <tr>
-                <td></td>
-                <td></td>
-            </tr>
-            
-            <tr>
-                <td></td>
-                <td></td>
+                <td><%= f.label :本文 %></td>
+                <td><%= f.text_field :introduction, class: "form-control col-sm-4" %></td>
             </tr>
         </tbody>
     </table>
+    <div class="form-group row">
+  <%= f.submit "変更を保存" ,class: 'btn btn-success' %>
+</div>
 </div>
 <% end %>
+
+

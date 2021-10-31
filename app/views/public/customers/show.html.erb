@@ -1,7 +1,8 @@
 <!--会員側／マイページ-->
+
+<div class="container my-3">
 <h3>マイページ</h3>
-<div class="row">
-<%= attachment_image_tag @customer, :profile_image, :fill, 60, 60, format: 'jpeg', fallback: "noimage.jpg" %>
+<%= attachment_image_tag @customer, :profile_image, :fill, 300, 300, format: 'jpeg', fallback: "noimage.png" %>
 </div>
 <table class="table table-borderless">
   <tbody>

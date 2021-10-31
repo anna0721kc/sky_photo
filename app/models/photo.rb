@@ -5,4 +5,9 @@ class Photo < ApplicationRecord
     favorites.where(user_id: user.id).exists?
   end
 
+  geocoded_by :address
+  after_validation :geocode
+
+  attachment :image
+
 end

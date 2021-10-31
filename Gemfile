@@ -66,3 +66,7 @@ gem 'jquery-rails'
 gem 'font-awesome-sass', '~> 5.13'
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
+gem "gmaps4rails"#GoogleMapを作成
+gem "geocoder"#地名から緯度経度に変換
+gem "gon"#railsでJSを使えるようにする
+gem "dotenv-rails"#GoogleMapAPIのkeyを隠す

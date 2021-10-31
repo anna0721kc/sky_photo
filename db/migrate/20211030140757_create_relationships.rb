@@ -6,6 +6,6 @@ class CreateRelationships < ActiveRecord::Migration[5.2]
 
       t.timestamps
     end
-
+    add_index :relationships, [:follower_id, :following_id], unique: true#「unique: true」で同じ組み合わせでデータを保存するのを防ぐ
   end
 end

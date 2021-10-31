@@ -6,25 +6,29 @@ class Public::PhotosController < ApplicationController
 
   def create
     @photo = Photo.new(photo_params)
-    @photo.customer_id = current_customer_id#ログイン後に投稿可
+    @photo.customer_id = current_customer.id#ログイン後に投稿可
+    @photo.latitude = 48.856614
+    @photo.longitude = 2.3522219
+
     if @photo.save
-      redirect_to photos_path(@photo)
+      redirect_to photo_path(@photo)
     else
       render new
     end
   end
 
   def index
-    @photos = Photo.all#ページネーション付けるなら後で変更
+    @photos = Photo.all
   end
 
   def show
-    @photo = Photo.find(params_photo)
+    @photo = Photo.find(params[:id])
+    gon.photo = @photo
   end
 
   def edit
     @photo = Photo.find(params[:id])
-    if @photo.customer_id != current_customer_id
+    if @photo.customer_id != current_customer.id
     redirect_to photo_path(@photo)
     end
   end
@@ -46,6 +50,6 @@ class Public::PhotosController < ApplicationController
 
   private
   def photo_params
-    params.require(:photo).permit(:profile_image_id, :address, :latitude, :longitude, :introduction)
+    params.require(:photo).permit(:image_id, :address, :latitude, :longitude, :introduction)
   end
 end
