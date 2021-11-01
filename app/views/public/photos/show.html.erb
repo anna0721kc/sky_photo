@@ -1,8 +1,35 @@
+<!--写真詳細-->
+<div class="container my-5">
+  <h2>your photo</h2>
+  <%= attachment_image_tag @photo, :image, :fill, 600, 450, format: 'jpeg' %>
+
+<div class="col-sm-6">
+  <%= @photo.introduction %>
+</div>
+<div class="col-sm-6">
+<%= @photo.address %>
+</div>
+
 <!--gonを読み込み-->
 <%= include_gon %>
-
 <div id="map"></div>
+<!--削除ボタン↓-->
+<% if @photo.customer == current_customer %>
+<%= link_to "削除", photo_path(@photo), method: :delete, "data-confirm" => "本当に写真を削除しますか？" %>
+<% end %>
 
+<!--↓お気に入り登録ボタン↓-->
+<% if @photo.favorited_by?(current_customer) %>
+<p>
+  <span>お気に入り解除</span>
+  <%= link_to "♡お気に入り解除", favorites_path(@photo), method: :delete %>
+</p>
+<% else %>
+<p>
+  <%= link_to "♡お気に入り追加", favorites_path(@photo), method: :post %>
+</p>
+<% end %>
+</div>
 
 <script>
   let map;
@@ -17,8 +44,8 @@
         lat: gon.photo.latitude,
         lng: gon.photo.longitude
       },
-      // マップの倍率はお好みで
-      zoom: 17,
+      // マップの倍率
+      zoom: 15,
     });
 
     marker = new google.maps.Marker({

@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   #会員側
   scope module: :public do
-    resources :photos, except: [:destroy]
+    resources :photos
     root to: 'homes#top'
     get '/about' => 'homes#about'
     get '/customers/:id/follow' => 'customers#follow'
@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     # get '/customers/edit' => 'customers#edit'
     # patch '/customers/edit' => 'customers#update'
     post '/favorites' => 'favorites#create'
+    get '/favorites' => 'favorites#index'
     delete '/favorites/:id' => 'favorites#destroy'
     get '/customers/:id' => 'customers#show',as: 'customer'
   end

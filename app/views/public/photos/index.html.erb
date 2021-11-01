@@ -1,1 +1,9 @@
-galleryページ
+<!--photo galleryページ-->
+<div class="container my-5">
+    <h3>Gallery</h3>
+
+<% @photos.each do |photo|  %>
+<%= attachment_image_tag photo, :image %>
+
+<% end %>
+</div>

@@ -7,9 +7,8 @@ class Public::PhotosController < ApplicationController
   def create
     @photo = Photo.new(photo_params)
     @photo.customer_id = current_customer.id#ログイン後に投稿可
-    @photo.latitude = 48.856614
-    @photo.longitude = 2.3522219
-
+    # @photo.latitude = 48.856614
+    # @photo.longitude = 2.3522219
     if @photo.save
       redirect_to photo_path(@photo)
     else
@@ -50,6 +49,6 @@ class Public::PhotosController < ApplicationController
 
   private
   def photo_params
-    params.require(:photo).permit(:image_id, :address, :latitude, :longitude, :introduction)
+    params.require(:photo).permit(:image, :address, :latitude, :longitude, :introduction)
   end
 end
