@@ -3,6 +3,7 @@ class Public::CustomersController < ApplicationController
   before_action :authenticate_customer!
   def show
     @customer = Customer.find(params[:id])
+    @photos = @customer.photos
   end
 
   def follow

@@ -1,9 +1,9 @@
 <!--会員側／マイページ-->
 
-<div class="container mt-3 mx-2 border-bottom">
+<div class="container my-5 mx-auto border-bottom">
 <h3>マイページ</h3>
 
-<div class="profile-container d-flex mx-auto justify-content-around align-items-center py-5">
+<div class="profile-container d-flex mx-auto justify-content-around align-items-center py-1">
 <%= attachment_image_tag @customer, :profile_image, :fill, 350, 350, format: 'jpeg', fallback: "noimage.png" %>
 <table class="table table-borderless">
   <tbody>
@@ -16,8 +16,8 @@
       <td><%= @customer.email %></td>
     </tr>
     <tr>
-      <td>紹介文</td>
-      <td><%= @customer.introduction %></td>
+      <td colspan="2"><%= @customer.introduction %></td>
+
     </tr>
   </tbody>
 </table>
@@ -27,4 +27,13 @@
 <%= link_to "お気に入り一覧", customer_favorites_path(current_customer), class: "btn btn-success ml-3 my-3" %>
 <% end %>
 </div>
+
 <!--自分の写真一覧-->
+<div class="container">
+<h3>your photos</h3>
+<% @photos.each do |photo| %>
+<%= link_to photo_path(photo) do %>
+<%= attachment_image_tag photo, :image, :fill, 400, 350, format: 'jpeg' %>
+<% end %>
+<% end %>
+</div>
