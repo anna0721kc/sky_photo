@@ -1,7 +1,8 @@
 class Public::FavoritesController < ApplicationController
 
   def create
-    @photo = Photo.find(params[:photo_id])
+
+    @photo = Photo.find(params[:photo_id]) # POST /photos/8/favorites -> POST /favorites.8 <-> link_to 'favoirte', favorites_path(@photo)
     @favorite = current_customer.favorites.new(photo_id: @photo.id)
     @favorite.save
     redirect_to photo_path(@photo)
@@ -15,5 +16,7 @@ class Public::FavoritesController < ApplicationController
   end
 
   def index
+    @favorites = Favorite.where(customer_id: current_customer.id).order(created_at: :desc).pluck(:photo_id)
+    @favorite = Photo.find(@favorites)
   end
 end

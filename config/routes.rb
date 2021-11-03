@@ -13,17 +13,19 @@ Rails.application.routes.draw do
   scope module: :public do
     resources :photos
     root to: 'homes#top'
+    resources :customers do
+      resources :favorites, only: [:index]
+    end
     get '/about' => 'homes#about'
     get '/customers/:id/follow' => 'customers#follow'
     get '/customers/:id/follower' => 'customers#follower'
     get '/customers/unsubscribe' => 'customers#unsubscribe'
     patch '/customers/withdraw' => 'customers#withdraw'
-    # get '/customers/edit' => 'customers#edit'
-    # patch '/customers/edit' => 'customers#update'
-    post '/favorites' => 'favorites#create'
-    get '/favorites' => 'favorites#index'
-    delete '/favorites/:id' => 'favorites#destroy'
-    get '/customers/:id' => 'customers#show',as: 'customer'
+
+
+    resources :photos do
+      resources :favorites, only: [:create, :destroy]
+    end
   end
 
   namespace :admin do
