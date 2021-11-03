@@ -2,10 +2,10 @@
 <div class="container my-5">
   <h2>photo</h2>
   <div class="col-sm-6">
-    <%= @photo.introduction %>
+    <p><%= @photo.introduction %></p>
   </div>
   <div class="col-sm-6">
-    撮影場所：<%= @photo.address %>
+     <p>撮影場所：<%= @photo.address %></p>
   </div>
   <%= attachment_image_tag @photo, :image, :fill, 800, 650, format: 'jpeg' %>
 
@@ -14,18 +14,18 @@
 <div id="map"></div>
 <!--削除ボタン↓-->
 <% if @photo.customer == current_customer %>
-<%= link_to "編集", edit_photo_path(@photo) %>
-<%= link_to "削除", photo_path(@photo), method: :delete, "data-confirm" => "本当に写真を削除しますか？" %>
+<%= link_to "編集", edit_photo_path(@photo), class: "btn btn-success mt-3" %>
+<%= link_to "削除", photo_path(@photo), method: :delete, "data-confirm" => "本当に写真を削除しますか？", class: "btn btn-danger mt-3 ml-3" %>
 <% end %>
 
 <!--↓お気に入り登録ボタン↓-->
 <% if @photo.favorited_by?(current_customer) %>
 <p>
-  <%= link_to "♡お気に入り解除", photo_favorite_path(@photo), method: :delete %>
+  <%= link_to "♡お気に入り解除", photo_favorite_path(@photo), method: :delete, class: "btn btn-info mt-3" %>
 </p>
 <% else %>
 <p>
-  <%= link_to "♡お気に入り追加", photo_favorites_path(@photo), method: :post %>
+  <%= link_to "♡お気に入り追加", photo_favorites_path(@photo), method: :post, class: "btn btn-warning mt-3" %>
 </p>
 <% end %>
 </div>
