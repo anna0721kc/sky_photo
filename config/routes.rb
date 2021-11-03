@@ -21,13 +21,11 @@ Rails.application.routes.draw do
     get '/customers/:id/follower' => 'customers#follower'
     get '/customers/unsubscribe' => 'customers#unsubscribe'
     patch '/customers/withdraw' => 'customers#withdraw'
-
-
     resources :photos do
       resources :favorites, only: [:create, :destroy]
     end
   end
-
+  #管理者側
   namespace :admin do
     resources :customers, only: [:index, :show, :edit, :update]
     get '/' => 'homes#top'

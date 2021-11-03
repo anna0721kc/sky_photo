@@ -16,7 +16,10 @@ class Public::FavoritesController < ApplicationController
   end
 
   def index
-    @favorites = Favorite.where(customer_id: current_customer.id).order(created_at: :desc).pluck(:photo_id)
-    @favorite = Photo.find(@favorites)
+    @customer = current_customer
+    @photos = @customer.photos
+    @favorites = Favorite.where(customer_id: current_customer.id).pluck(:photo_id)
+    @favorite_list = Photo.find(@favorites)
+
   end
 end

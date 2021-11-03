@@ -1,4 +1,7 @@
 <!--ユーザーのお気に入り一覧-->
 <div class="container my-5">
-<h2>your favoirtes</h2>
+    <h3>your favorites</h3>
+<% @favorite_list.each do |photo| %>
+    <%= attachment_image_tag photo, :image, :fill, 500, 400, format: 'jpeg' %>
+    <% end %>
 </div>
