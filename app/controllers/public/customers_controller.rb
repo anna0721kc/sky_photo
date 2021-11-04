@@ -7,9 +7,15 @@ class Public::CustomersController < ApplicationController
   end
 
   def follow
+    @customer = Customer.find(params[:id])
+    @customers = @customer.following.all
+    
   end
 
   def follower
+    @customer = Customer.find(params[:id])
+    @customers = @customer.followers.all
+    
   end
 
   def unsubscribe

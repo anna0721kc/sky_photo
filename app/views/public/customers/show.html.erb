@@ -1,7 +1,13 @@
 <!--会員側／マイページ-->
 
 <div class="container my-5 mx-auto border-bottom">
-<h3>マイページ</h3>
+  <% if @customer == current_customer %>
+  <h3>マイページ</h3>
+  <% else %>
+  <h3>
+    <%= @customer.name %>さんのページ
+  </h3>
+  <% end %>
 
 <div class="profile-container d-flex mx-auto justify-content-around align-items-center py-1">
 <%= attachment_image_tag @customer, :profile_image, :fill, 350, 350, format: 'jpeg', fallback: "noimage.png" %>
@@ -17,11 +23,13 @@
     </tr>
     <tr>
       <td colspan="2"><%= @customer.introduction %></td>
-
     </tr>
   </tbody>
 </table>
 </div>
+
+<%= link_to "フォロー", following_customer_path(@customer), class: "nav-link" %>
+
 <% if @customer == current_customer %>
 <%= link_to "編集", edit_customer_registration_path(@customer), class: "btn btn-success ml-5 my-3" %>
 <%= link_to "お気に入り一覧", customer_favorites_path(current_customer), class: "btn btn-success ml-3 my-3" %>
@@ -30,7 +38,7 @@
 
 <!--自分の写真一覧-->
 <div class="container">
-<h3>your photos</h3>
+<h3>post photos</h3>
 <% @photos.each do |photo| %>
 <%= link_to photo_path(photo) do %>
 <%= attachment_image_tag photo, :image, :fill, 400, 350, format: 'jpeg' %>

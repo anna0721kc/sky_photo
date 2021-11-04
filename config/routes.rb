@@ -15,6 +15,11 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     resources :customers do
       resources :favorites, only: [:index]
+      member do
+        get :following, :followers
+      end
+      resources :relationships, only: [:create, :destroy]
+
     end
     get '/about' => 'homes#about'
     get '/customers/:id/follow' => 'customers#follow'

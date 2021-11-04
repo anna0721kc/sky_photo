@@ -1,7 +1,6 @@
 class Public::FavoritesController < ApplicationController
-
+  before_action :authenticate_customer!
   def create
-
     @photo = Photo.find(params[:photo_id]) # POST /photos/8/favorites -> POST /favorites.8 <-> link_to 'favoirte', favorites_path(@photo)
     @favorite = current_customer.favorites.new(photo_id: @photo.id)
     @favorite.save

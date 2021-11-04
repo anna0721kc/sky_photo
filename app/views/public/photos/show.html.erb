@@ -12,6 +12,11 @@
 <!--gonを読み込み-->
 <%= include_gon %>
 <div id="map"></div>
+
+<%= link_to customer_path(@photo.customer_id) do %>
+<%= attachment_image_tag @photo.customer, :profile_image, :fill, 100, 100, fallback: "no_image.jpg", class:"bd-placeholder-img align-self-center mx-3" %>
+<% end %>
+
 <!--削除ボタン↓-->
 <% if @photo.customer == current_customer %>
 <%= link_to "編集", edit_photo_path(@photo), class: "btn btn-success mt-3" %>
@@ -19,7 +24,7 @@
 <% end %>
 
 <!--↓お気に入り登録ボタン↓-->
-<% if @photo.favorited_by?(current_customer) %>
+<% if customer_signed_in? && @photo.favorited_by?(current_customer) %>
 <p>
   <%= link_to "♡お気に入り解除", photo_favorite_path(@photo), method: :delete, class: "btn btn-info mt-3" %>
 </p>
