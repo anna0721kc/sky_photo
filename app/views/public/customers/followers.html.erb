@@ -1,0 +1,25 @@
+<div class= "container my-5">
+<h3>
+  <%= @customer.name %>さんのフォロワーリスト
+</h3>
+<table>
+  <tr>
+    <% @customers.each do |customer| %>
+    <td>
+      <%= link_to customer_path(customer), class: "nav-link" do %>
+      <%= customer.name %>
+      <% end %>
+    </td>
+    <td>
+      <% if current_customer != customer %>
+      <% if customer.followed_by?(current_customer) %>
+      <%=link_to "フォロー中", customer_relationship_path(customer.id), method: :delete, "data-confirm" => "フォロー解除しますか？" %>
+      <% else %>
+      <%=link_to "フォローする", customer_relationships_path(customer.id), method: :post %>
+      <% end %>
+      <% end %>
+    </td>
+</tr>
+<% end %>
+</table>
+</div>

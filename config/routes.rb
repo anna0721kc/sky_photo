@@ -14,16 +14,13 @@ Rails.application.routes.draw do
     resources :photos
     root to: 'homes#top'
     resources :customers do
-      resources :favorites, only: [:index]
-      member do
-        get :following, :followers
-      end
-      resources :relationships, only: [:create, :destroy]
-
+      resources :favorites, only: [:index]#お気に入り customersにネスト
+      resources :relationships, only: [:create, :destroy]#フォロー機能 customersにネスト
+      get :follows, on: :member#「on member」URLの深堀りオプション
+      get :followers, on: :member
     end
+
     get '/about' => 'homes#about'
-    get '/customers/:id/follow' => 'customers#follow'
-    get '/customers/:id/follower' => 'customers#follower'
     get '/customers/unsubscribe' => 'customers#unsubscribe'
     patch '/customers/withdraw' => 'customers#withdraw'
     resources :photos do

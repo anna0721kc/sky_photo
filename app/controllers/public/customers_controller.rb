@@ -1,21 +1,20 @@
 #会員側／customerコントローラ
 class Public::CustomersController < ApplicationController
   before_action :authenticate_customer!
+
   def show
     @customer = Customer.find(params[:id])
     @photos = @customer.photos
   end
 
-  def follow
+  def follows
     @customer = Customer.find(params[:id])
-    @customers = @customer.following.all
-    
+    @customers = @customer.followings
   end
 
-  def follower
+  def followers
     @customer = Customer.find(params[:id])
-    @customers = @customer.followers.all
-    
+    @customers = @customer.followers
   end
 
   def unsubscribe

@@ -1,22 +1,16 @@
 class Public::RelationshipsController < ApplicationController
 
   def create
-    @customer =Ccustomer.find(params[:relationship][:following_id])
-    current_customer.follow(@customer)
-    # respond_to do |format|
-    #   format.html {redirect_back(fallback_location: root_url)}
-    #   format.js
-    # end
+    follow = current_customer.active_relationships.build(follower_id: params[:customer_id])
+    follow.save
+    redirect_to customer_path(params[:customer_id])
   end
 
 
   def destroy
-    @customer = Customer.find(params[:relationship][:following_id])
-    current_customer.unfollow(@customer)
-    # respond_to do |format|
-    #   format.html {redirect_back(fallback_location: root_url)}
-    #   format.js
-    # end
+    follow = current_customer.active_relationships.find_by(follower_id: params[:customer_id])
+    follow.destroy
+    redirect_to customer_path(params[:customer_id])
   end
 
 end

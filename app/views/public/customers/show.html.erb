@@ -9,7 +9,7 @@
   </h3>
   <% end %>
 
-<div class="profile-container d-flex mx-auto justify-content-around align-items-center py-1">
+<div class="profile-container d-flex mx-auto justify-content-around align-items-center py-3">
 <%= attachment_image_tag @customer, :profile_image, :fill, 350, 350, format: 'jpeg', fallback: "noimage.png" %>
 <table class="table table-borderless">
   <tbody>
@@ -24,15 +24,28 @@
     <tr>
       <td colspan="2"><%= @customer.introduction %></td>
     </tr>
+    <tr>
+      <td colspan="2">
+        <%= link_to "フォローリスト", follows_customer_path(@customer), class: "btn btn-info btn-push" %>
+        <%= link_to "フォロワーリスト", followers_customer_path(@customer), class: "btn btn-info btn-push" %>
+      </td>
+    </tr>
   </tbody>
 </table>
 </div>
+<!--フォロー機能↓-->
+<% if @customer != current_customer && customer_signed_in? %>
+<% if  @customer.followed_by?(current_customer) %>
+<%= link_to "フォローを解除", customer_relationship_path(@customer),method: :delete, class: "btn btn-success btn-push" %>
+<% else %>
+<%= link_to "フォローする", customer_relationships_path(@customer),method: :post, class: "btn btn-success btn-push" %>
+<% end %>
+<% end %>
 
-<%= link_to "フォロー", following_customer_path(@customer), class: "nav-link" %>
-
+<!--編集/お気に入り機能-->
 <% if @customer == current_customer %>
-<%= link_to "編集", edit_customer_registration_path(@customer), class: "btn btn-success ml-5 my-3" %>
-<%= link_to "お気に入り一覧", customer_favorites_path(current_customer), class: "btn btn-success ml-3 my-3" %>
+<%= link_to "編集", edit_customer_registration_path(@customer), class: "btn btn-success ml-5 my-3 btn-push" %>
+<%= link_to "お気に入り一覧", customer_favorites_path(current_customer), class: "btn btn-success ml-3 my-3 btn-push" %>
 <% end %>
 </div>
 

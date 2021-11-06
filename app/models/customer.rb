@@ -8,24 +8,18 @@ class Customer < ApplicationRecord
   has_many :photos, dependent: :destroy
   has_many :favorites, dependent: :destroy
 
-  has_many :following_relationships,foreign_key: "follower_id", class_name: "Relationship", dependent: :destroy
-  has_many :followings, through: :following_relationships
-  has_many :follower_relationships, foreign_key: "follower_id", class_name: "Relationship", dependent: :destroy
-  has_many :followers, through: :follower_relationships
+  #フォローする側から見て、フォローされる側を(中間テーブルを経由して)集める。なので親はfollowing_id(フォローする側)
+  has_many :active_relationships, class_name: "Relationship", foreign_key: :following_id
+  # 中間テーブルを経由して「follower」モデルのCustomer(フォローされた側)を集めることを「followings」と定義
+  has_many :followings, through: :active_relationships, source: :follower
+  
+  #フォローされる側から見て、フォローしてくる側を(中間テーブルを経由して)集める。なので親はfollower_id(フォローされる側)
+  has_many :passive_relationships, class_name: "Relationship", foreign_key: :follower_id
+  # 中間テーブルを経由して「following」モデルのCustomer(フォローする側)を集めることを「followers」と定義
+  has_many :followers, through: :passive_relationships, source: :following
 
-
-  #すでにフォロー済みであればture返す
-  def following?(other_customer)
-    self.followings.include?(other_customer)
-  end
-
-  #ユーザーをフォローする
-  def follow(other_customer)
-    self.following_relationships.create(following_id: other_customer.id)
-  end
-
-  #ユーザーのフォローを解除する
-  def unfollow(other_customer)
-    self.following_relationships.find_by(following_id: other_customer.id).destroy
+  def followed_by?(customer)
+    # follow済みかどうか判定(今自分(引数のcustomer)がフォローしようとしているユーザー(レシーバー)がフォローされているユーザー(つまりpassive)の中から、引数に渡されたユーザー(自分)がいるかどうかを調べる)
+    passive_relationships.find_by(following_id: customer.id).present?
   end
 end

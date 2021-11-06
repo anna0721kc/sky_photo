@@ -24,6 +24,7 @@
 <% end %>
 
 <!--↓お気に入り登録ボタン↓-->
+<% if @photo.customer != current_customer %>
 <% if customer_signed_in? && @photo.favorited_by?(current_customer) %>
 <p>
   <%= link_to "♡お気に入り解除", photo_favorite_path(@photo), method: :delete, class: "btn btn-info mt-3" %>
@@ -32,6 +33,7 @@
 <p>
   <%= link_to "♡お気に入り追加", photo_favorites_path(@photo), method: :post, class: "btn btn-warning mt-3" %>
 </p>
+<% end %>
 <% end %>
 </div>
 
