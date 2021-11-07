@@ -63,15 +63,19 @@ aboutページ
 .about{
   height: 700px;
   width: 100%;
-  background-image: image-url('image08.png');
+  background-image: image-url('image01.jfif');
   background-size: cover;
   background-position: center;
   position: relative;
 }
 
 .about-text {
+  background-color: rgba(255,5,55,0.3);
  color: blue;
  position: absolute;
  padding: 10px 10px;
  font-size:30px;
+ bottom: 50px;
+ width: 100%;
+ max-width: 620px;
 }

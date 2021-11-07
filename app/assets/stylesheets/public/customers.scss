@@ -1,11 +1,6 @@
 // Place all the styles related to the public/customers controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
-.profile-container {
-  font-size: 20px;
-}
-
 .nav-link {
     text-decoration: none;
     color: black;
@@ -13,4 +8,36 @@
 .btn-push:active {
     transform: translateY(3px);
     border-bottom: none;
+}
+table td {
+    table-layout: fixed;
+    word-break: break-word;
+}
+.profile {
+  background: #FFF;
+  padding: 2rem;
+  border: 2px solid #D2B48C;
+  border-radius: 5px;
+}
+.profile__img {
+  display: block;
+  width: 160px;
+  height: 160px;
+  border-radius:50%;
+  margin: 0 auto;
+}
+.profile__name {
+  text-align: center;
+  font-weight:bold;
+  font-size:1.2rem;
+  letter-spacing:.1rem;
+  margin: 0 auto;
+}
+.profile__desc {
+    text-align: center;
+    line-height: 1.6rem;
+    margin: 0 auto;
+}
+h3 {
+  text-align: center;
 }

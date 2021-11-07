@@ -1,8 +1,9 @@
 <!--管理者側/会員詳細-->
+<div class="container my-5 w-50">
 <h3>
   <%= @customer.name %>さん
 </h3>
-<table class="table table-borderless">
+<table class="table">
   <tbody>
     <tr>
       <td>会員ＩＤ</td>
@@ -23,4 +24,5 @@
   </tbody>
 </table>
 
-<%= link_to "編集する", edit_admin_customer_path(@customer.id) %>
+<%= link_to "編集する", edit_admin_customer_path(@customer.id), class: "btn btn-success" %>
+</div>

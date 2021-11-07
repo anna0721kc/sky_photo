@@ -1,60 +1,43 @@
 <!--会員側／マイページ-->
+<div class="mx-auto profile shadow" style="width: 400px;">
+  <%= attachment_image_tag @customer, :profile_image, format: 'jpeg', fallback: "noimage.png", class: "profile__img" %>
+  <div class="profile__name">
+    <%= @customer.name %>
+  </div>
+  <div class="profile__desc">
+      <%= simple_format(@customer.introduction) %>
+  </div>
+  <div class="profile__desc mt-3">
+    <%= link_to "フォローリスト", follows_customer_path(@customer), class: "btn btn-outline-info btn-push" %>
+    <%= link_to "フォロワーリスト", followers_customer_path(@customer), class: "btn btn-outline-info btn-push" %>
+  </div>
 
-<div class="container my-5 mx-auto border-bottom">
-  <% if @customer == current_customer %>
-  <h3>マイページ</h3>
-  <% else %>
-  <h3>
-    <%= @customer.name %>さんのページ
-  </h3>
-  <% end %>
-
-<div class="profile-container d-flex mx-auto justify-content-around align-items-center py-3">
-<%= attachment_image_tag @customer, :profile_image, :fill, 350, 350, format: 'jpeg', fallback: "noimage.png" %>
-<table class="table table-borderless">
-  <tbody>
-    <tr>
-      <td>ユーザー名</td>
-      <td><%= @customer.name %></td>
-    </tr>
-    <tr>
-      <td>メールアドレス</td>
-      <td><%= @customer.email %></td>
-    </tr>
-    <tr>
-      <td colspan="2"><%= @customer.introduction %></td>
-    </tr>
-    <tr>
-      <td colspan="2">
-        <%= link_to "フォローリスト", follows_customer_path(@customer), class: "btn btn-info btn-push" %>
-        <%= link_to "フォロワーリスト", followers_customer_path(@customer), class: "btn btn-info btn-push" %>
-      </td>
-    </tr>
-  </tbody>
-</table>
-</div>
 <!--フォロー機能↓-->
-<% if @customer != current_customer && customer_signed_in? %>
-<% if  @customer.followed_by?(current_customer) %>
-<%= link_to "フォローを解除", customer_relationship_path(@customer),method: :delete, class: "btn btn-success btn-push" %>
-<% else %>
-<%= link_to "フォローする", customer_relationships_path(@customer),method: :post, class: "btn btn-success btn-push" %>
-<% end %>
-<% end %>
+  <div class="profile__desc mt-3">
+  <% if @customer != current_customer && customer_signed_in? %>
+    <% if  @customer.followed_by?(current_customer) %>
+    <%= link_to "フォローを解除", customer_relationship_path(@customer),method: :delete, class: "btn btn-outline-success btn-push" %>
+    <% else %>
+    <%= link_to "フォローする", customer_relationships_path(@customer),method: :post, class: "btn btn-outline-success btn-push" %>
+    <% end %>
+  <% end %>
+  </div>
 
 <!--編集/お気に入り機能-->
+<div class="profile__desc mt-1">
 <% if @customer == current_customer %>
-<%= link_to "編集", edit_customer_registration_path(@customer), class: "btn btn-success ml-5 my-3 btn-push" %>
-<%= link_to "お気に入り一覧", customer_favorites_path(current_customer), class: "btn btn-success ml-3 my-3 btn-push" %>
+  <%= link_to "プロフィール編集", edit_customer_registration_path(@customer), class: "btn btn-outline-success btn-push" %>
+  <%= link_to "お気に入り一覧", customer_favorites_path(current_customer), class: "btn btn-outline-success btn-push" %>
 <% end %>
+</div>
 </div>
 
 <!--自分の写真一覧-->
-<div class="container">
-<h3>post photos</h3>
-<% @photos.each do |photo| %>
-<%= link_to photo_path(photo) do %>
-<%= attachment_image_tag photo, :image, :fill, 400, 350, format: 'jpeg' %>
-<% end %>
-<% end %>
+<div class="container mt-5">
+  <h3 class>post photos</h3>
+  <% @photos.each do |photo| %>
+    <%= link_to photo_path(photo) do %>
+    <%= attachment_image_tag photo, :image, :fill, 550, 400, format: 'jpeg',class: "mx-auto d-block" %>
+    <% end %>
+  <% end %>
 </div>

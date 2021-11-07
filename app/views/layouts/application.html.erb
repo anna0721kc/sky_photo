@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
   </head>
   <body>
     <header>
@@ -29,18 +30,54 @@
 
       <% elsif customer_signed_in? %><!--会員でログインしていたら-->
       <%= image_tag 'skyrogo.jpg', size: "190x95" %>
-      <li><%= link_to "about", about_path %></li>
-      <li><%= link_to "gallery", photos_path %></li>
-      <li><%= link_to "new photo", new_photo_path %></li>
-      <li><%= link_to "mypage", customer_path(current_customer) %></li>
-      <li><%= link_to "logout", destroy_customer_session_path, method: :delete %></li>
+      <li>
+        <%= link_to about_path do %>
+        <i class="fas fa-question"> About</i>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to photos_path do %>
+        <i class="fas fa-images"> Gallery</i>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to new_photo_path do %>
+        <i class="fas fa-camera-retro"> New photo</i>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to customer_path(current_customer) do %>
+        <i class="fas fa-user"> My page</i>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to destroy_customer_session_path, method: :delete do %>
+        <i class="fas fa-sign-out-alt"> Log out</i>
+        <% end %>
+      </li>
 
       <% else %><!--ログイン前の画面を表示-->
       <%= image_tag 'skyrogo.jpg', size: "190x95" %>
-      <li><%= link_to "about", about_path %></li>
-      <li><%= link_to "gallery", photos_path %></li>
-      <li><%= link_to "signin", new_customer_registration_path %></li>
-      <li><%= link_to "login", new_customer_session_path %></li>
+      <li>
+        <%= link_to about_path do %>
+        <i class="fas fa-question"> About</i>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to photos_path do %>
+        <i class="fas fa-images"> Gallery</i>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to new_customer_registration_path do %>
+        <i class="fas fa-user-plus"> New member</i>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to new_customer_session_path do %>
+        <i class="fas fa-sign-in-alt"> Log in</i>
+        <% end %>
+      </li>
       <% end %>
     </ul>
   </div>
