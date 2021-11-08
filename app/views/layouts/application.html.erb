@@ -13,21 +13,21 @@
     <header>
       <div class="rogo">
         <%= link_to root_path do %>
-        <%= image_tag 'skyrogo.jpg', size: "195x95" %>
+        <%= image_tag 'skyrogo2.jpg', size: "195x120" %>
         <% end %>
       </div>
     </header>
     <div id="navArea">
       <nav>
-      <div class="inner">
+      <div class="inner text-center">
         <ul>
           <% if admin_signed_in? %><!--管理者でログイン-->
-          <%= image_tag 'skyrogo.jpg', size: "190x95" %>
+          <%= image_tag 'skyrogo2.jpg', size: "190x125" %>
           <li><%= link_to "ユーザ一覧", admin_customers_path %></li>
           <li><%= link_to "logout", destroy_admin_session_path, method: :delete %></li>
 
           <% elsif customer_signed_in? %><!--会員でログインしていたら-->
-          <%= image_tag 'skyrogo.jpg', size: "190x95" %>
+          <%= image_tag 'skyrogo2.jpg', size: "190x125" %>
           <li>
           <%= link_to about_path do %>
           <i class="fas fa-question"> About</i>
@@ -55,7 +55,7 @@
       </li>
 
       <% else %><!--ログイン前の画面を表示-->
-      <%= image_tag 'skyrogo.jpg', size: "190x95" %>
+      <%= image_tag 'skyrogo2.jpg', size: "190x125" %>
       <li>
         <%= link_to about_path do %>
         <i class="fas fa-question"> About</i>
