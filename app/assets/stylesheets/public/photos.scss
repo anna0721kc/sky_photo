@@ -1,6 +1,7 @@
 // Place all the styles related to the public/photos controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
 #map {
   height: 500px;
   width: 70%;
@@ -12,4 +13,10 @@ img {
 p {
   margin-top: 5px;
   font-size: 20px;
+}
+h5 {
+  text-align: center;
+}
+div h5{
+  font-size : 25px;
 }

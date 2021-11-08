@@ -1,30 +1,41 @@
 <!--写真投稿ページ-->
-<div class="container my-5">
-    <h2>new photo</h2>
-    <div class="row">
+<div class="container">
+  <div class="row no-gutters">
+    <div class="col-md-7 col-sm-10 mx-sm-auto shadow-lg rounded px-0 my-5">
+      <h5 class="text-dark bg-light p-4 mb-0">
+          <strong>new photo</strong>
+      </h5>
+      <div class="form-body p-4">
+          <% if @photo.errors.any? %>
+          <%= @photo.errors.count %>件のエラーが発生しました
+          <% @photo.errors.full_messages.each do |message| %><br />
+            <%= message %>
+          <% end %>
+        <% end %>
+
+
         <%= form_with model: @photo, url: photos_path, local:true do |f| %>
-        <div class="col-sm-10">
+        <div class="col text-center">
             <table class="table table-borderless">
                 <tbody>
                     <tr>
-                        <td></td>
                         <td><%= f.attachment_field :image %></td>
                     </tr>
                     <tr>
-                        <td width="120"><%= f.label :撮影場所 %></td>
-                        <td><%= f.text_field :address, class: "form-control" %></td>
+                        <td><%= f.text_field :address, class: "form-control", placeholder:"撮影場所" %></td>
                     </tr>
                     <tr>
-                        <td width="120"><%= f.label :本文 %></td>
-                        <td><%= f.text_area :introduction, class: "form-control", :size=>"60x10" %></td>
+                        <td><%= f.text_area :introduction, class: "form-control", :size=>"60x10", placeholder:"本文" %></td>
                     </tr>
                 </tbody>
             </table>
-            <div class="form-group row">
-                <%= f.submit "保存" ,class: 'btn btn-success' %>
+            <div class="col text-center">
+                <%= f.submit "保存" ,class: 'btn btn-lg btn-info btn-block' %>
             </div>
         </div>
     </div>
+</div>
+</div>
 </div>
 <% end %>
 

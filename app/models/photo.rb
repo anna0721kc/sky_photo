@@ -8,4 +8,6 @@ class Photo < ApplicationRecord
   after_validation :geocode#addressが登録された直後にgeocodeが呼び出される
   attachment :image
 
+  validates :address, presence: true
+  validates :image, presence: true
 end

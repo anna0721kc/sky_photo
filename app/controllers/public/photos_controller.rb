@@ -10,7 +10,7 @@ class Public::PhotosController < ApplicationController
     if @photo.save
       redirect_to photo_path(@photo)
     else
-      render new
+      render template: 'public/photos/new'#ディレクトリ指定する
     end
   end
 

@@ -1,13 +1,11 @@
 <!--写真詳細-->
-<div class="container my-5">
-  <h2>photo</h2>
-  <div class="col-sm-6">
-    <p><%= @photo.introduction %></p>
-  </div>
-  <div class="col-sm-6">
-     <p>撮影場所：<%= @photo.address %></p>
-  </div>
-  <%= attachment_image_tag @photo, :image, :fill, 800, 650, format: 'jpeg' %>
+<h2>photo</h2>
+
+  <p><%= @photo.introduction %></p>
+    <p>撮影場所：<%= @photo.address %></p>
+     <%= attachment_image_tag @photo, :image, :fill, 800, 650, format: 'jpeg' %>
+
+
 
 <!--gonを読み込み-->
 <%= include_gon %>
@@ -35,7 +33,7 @@
 </p>
 <% end %>
 <% end %>
-</div>
+
 
 <script>
   let map;
