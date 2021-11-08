@@ -13,6 +13,9 @@ Rails.application.routes.draw do
   scope module: :public do
     resources :photos
     root to: 'homes#top'
+    get '/about' => 'homes#about'
+    get '/customers/unsubscribe' => 'customers#unsubscribe'
+    patch '/customers/withdraw' => 'customers#withdraw'
     resources :customers do
       resources :favorites, only: [:index]#お気に入り customersにネスト
       resources :relationships, only: [:create, :destroy]#フォロー機能 customersにネスト
@@ -20,9 +23,7 @@ Rails.application.routes.draw do
       get :followers, on: :member
     end
 
-    get '/about' => 'homes#about'
-    get '/customers/unsubscribe' => 'customers#unsubscribe'
-    patch '/customers/withdraw' => 'customers#withdraw'
+
     resources :photos do
       resources :favorites, only: [:create, :destroy]
     end

@@ -11,32 +11,30 @@
   </head>
   <body>
     <header>
-<!--ロゴ(TOPへリンク)-->
-<div class="rogo">
-<%= link_to root_path do %>
-<%= image_tag 'skyrogo.jpg', size: "200x95" %>
-<% end %>
-</div>
-<!--ロゴ-->
-</header>
-<div id="navArea">
-<nav>
-  <div class="inner">
-    <ul>
-      <% if admin_signed_in? %><!--管理者でログイン-->
-      <%= image_tag 'skyrogo.jpg', size: "190x95" %>
-      <li><%= link_to "ユーザ一覧", admin_customers_path %></li>
-      <li><%= link_to "logout", destroy_admin_session_path, method: :delete %></li>
-
-      <% elsif customer_signed_in? %><!--会員でログインしていたら-->
-      <%= image_tag 'skyrogo.jpg', size: "190x95" %>
-      <li>
-        <%= link_to about_path do %>
-        <i class="fas fa-question"> About</i>
+      <div class="rogo">
+        <%= link_to root_path do %>
+        <%= image_tag 'skyrogo.jpg', size: "200x95" %>
         <% end %>
-      </li>
-      <li>
-        <%= link_to photos_path do %>
+      </div>
+    </header>
+    <div id="navArea">
+      <nav>
+      <div class="inner">
+        <ul>
+          <% if admin_signed_in? %><!--管理者でログイン-->
+          <%= image_tag 'skyrogo.jpg', size: "190x95" %>
+          <li><%= link_to "ユーザ一覧", admin_customers_path %></li>
+          <li><%= link_to "logout", destroy_admin_session_path, method: :delete %></li>
+
+          <% elsif customer_signed_in? %><!--会員でログインしていたら-->
+          <%= image_tag 'skyrogo.jpg', size: "190x95" %>
+          <li>
+          <%= link_to about_path do %>
+          <i class="fas fa-question"> About</i>
+          <% end %>
+          </li>
+          <li>
+           <%= link_to photos_path do %>
         <i class="fas fa-images"> Gallery</i>
         <% end %>
       </li>

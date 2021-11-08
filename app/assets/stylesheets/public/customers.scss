@@ -15,14 +15,24 @@ table td {
 }
 .profile {
   background: #FFF;
+  margin: 10px auto;
   padding: 2rem;
   border: 2px solid #D2B48C;
   border-radius: 5px;
 }
+// ユーザー詳細↓
 .profile__img {
   display: block;
   width: 160px;
   height: 160px;
+  border-radius:50%;
+  margin: 0 auto;
+}
+// フォローリスト↓
+.profile_img {
+  display: block;
+  width: 90px;
+  height: 90px;
   border-radius:50%;
   margin: 0 auto;
 }

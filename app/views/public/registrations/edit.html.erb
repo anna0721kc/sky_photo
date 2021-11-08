@@ -1,48 +1,49 @@
 <%= form_with model: @customer, url:customer_registration_path, local: true do |f| %>
-<div class="container my-5 ml-sm-5">
+<div class="mx-5 my-5">
+  <div class="wrapper form-signin">
   <%= render "public/shared/error_messages", resource: resource %>
-<h2>マイページ編集</h2>
+
+<h3 class="form-signin-heading">プロフィール編集</h3>
+<hr class="colorgraph"><br>
   <div class="field">
     <%= f.attachment_field :profile_image %>
   </div>
 
   <div class="field">
     <%= f.label :ユーザー名 %><br />
-    <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+    <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form-control" %>
   </div>
 
   <div class="field">
     <%= f.label :メールアドレス %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
   </div>
   <div class="field">
     <%= f.label :紹介文 %><br />
-    <%= f.text_area :introduction, autofocus: true, autocomplete: "introduction", :size=>"60x10" %>
+    <%= f.text_area :introduction, autofocus: true, autocomplete: "introduction", :size=>"60x10", class: "form-control" %>
   </div>
 
 <div class="field">
-    <%= f.label :password, "パスワード変更" %> <i>(変更しない場合は入力不要)</i><br />
+    <%= f.label :password, "パスワード変更" %> <i>(※変更の場合のみ入力して下さい)</i><br />
     <em><%= @minimum_password_length %>文字以上</em><br />
     <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-
+    <% if @minimum_password_length %><br />
     <% end %>
   </div>
-
   <div class="field">
     <%= f.label :password_confirmation, "パスワード変更(確認)" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
   </div>
 
   <div class="field">
-    <%= f.label :current_password, "現在のパスワード" %> <i>(変更する場合は入力して下さい)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
+    <%= f.label :current_password, "現在のパスワード" %> <i>(※変更する場合は入力して下さい)</i><br />
+    <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control" %>
   </div>
 
   <div class="actions">
     <%= f.submit "変更を保存", class: "btn btn-success my-3" %>
     <%= link_to "退会へ", customers_unsubscribe_path(@customer), class: "btn btn-danger my-3 ml-5" %>
+  </div>
   </div>
   </div>
 <% end %>

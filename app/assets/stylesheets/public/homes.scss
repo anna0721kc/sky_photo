@@ -6,13 +6,12 @@
 topページ
 =============*/
 .swiper-slide img {
-  height: 700px;
+  height: 800px;
   width: 95%;
   background-size: cover;
 }
 html, body {
       position: relative;
-      height: 700px;
     }
     body {
       background: #eee;
@@ -47,16 +46,26 @@ html, body {
       -webkit-align-items: center;
       align-items: center;
     }
+/*============
+トップページ
+エンターボタン
+=============*/
 .link{
-  color: #000011;
+  font-family: 'Roboto Slab', serif;
   position: absolute;/*親要素(swiper-slide)にposition:relative*/
-  color: blue;
-  font-size:50px;
+  font-size: 80px;
+  padding: 0.1em 0.3em;
+	background-image: linear-gradient(to right, rgba(0,0,0,0) 50%, #3FBFBF 50%);
+	background-position: 0 0;
+	background-size: 200% auto;
+	transition: .3s;
+	color: #ffffff;
 }
 .link:hover {
-  color :#888888;
-  text-decoration: none;
+	background-position: -100% 0;
+	color: #fff;
 }
+
 /*============
 aboutページ
 =============*/
@@ -66,16 +75,16 @@ aboutページ
   background-image: image-url('image01.jfif');
   background-size: cover;
   background-position: center;
-  position: relative;
 }
-
 .about-text {
-  background-color: rgba(255,5,55,0.3);
- color: blue;
- position: absolute;
- padding: 10px 10px;
- font-size:30px;
- bottom: 50px;
- width: 100%;
- max-width: 620px;
+  background : none;
+  text-align: center;
+  padding-top : 50px;
+  font-size: 44px;
+  font-family: 'Roboto Slab', serif;
+}
+.about-text h1 {
+  font-family: 'Roboto Slab', serif;
+  font-weight: 500;
+  font-size: 60px;
 }
