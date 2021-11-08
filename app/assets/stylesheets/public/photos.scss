@@ -3,11 +3,14 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 #map {
-  height: 500px;
-  width: 70%;
+  height: 400px;
+  width: 60%;
   margin-top : 10px;
+  margin-right: auto;
+  margin-left: auto;
 }
 img {
+  box-sizing: border-box;
   margin: 5px 5px;
 }
 p {
