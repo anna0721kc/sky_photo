@@ -6,7 +6,7 @@
 topページ
 =============*/
 .swiper-slide img {
-  height: 800px;
+  height: 700px;
   width: 95%;
   background-size: cover;
 }
@@ -53,9 +53,9 @@ html, body {
 .link{
   font-family: 'Roboto Slab', serif;
   position: absolute;/*親要素(swiper-slide)にposition:relative*/
-  font-size: 80px;
+  font-size: 70px;
   padding: 0.1em 0.3em;
-	background-image: linear-gradient(to right, rgba(0,0,0,0) 50%, #3FBFBF 50%);
+	background-image: linear-gradient(to right, rgba(0,0,0,0) 50%, #B0E0E6 50%);
 	background-position: 0 0;
 	background-size: 200% auto;
 	transition: .3s;
@@ -75,6 +75,12 @@ aboutページ
   background-image: image-url('image01.jfif');
   background-size: cover;
   background-position: center;
+  animation: fadeIn 1.5s ease 0s 1 normal;
+  -webkit-animation: fadeIn 1.5s ease 0s 1 normal;
+}
+@keyframes fadeIn {
+  0% {opacity: 0}
+  100% {opacity: 1}
 }
 .about-text {
   background : none;

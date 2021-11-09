@@ -1,5 +1,5 @@
 <!--会員側／マイページ-->
-<div class="mx-auto profile shadow" style="width: 400px;">
+<div class="mx-auto profile shadow" style="width: 470px;">
   <%= attachment_image_tag @customer, :profile_image, format: 'jpeg', fallback: "noimage.png", class: "profile__img" %>
   <div class="profile__name">
     <%= @customer.name %>
@@ -8,17 +8,17 @@
       <%= simple_format(@customer.introduction) %>
   </div>
   <div class="profile__desc mt-3">
-    <%= link_to "フォローリスト", follows_customer_path(@customer), class: "btn btn-outline-info btn-push" %>
-    <%= link_to "フォロワーリスト", followers_customer_path(@customer), class: "btn btn-outline-info btn-push" %>
+    <%= link_to "フォローリスト", follows_customer_path(@customer), class: "btn btn-info btn-push" %>
+    <%= link_to "フォロワーリスト", followers_customer_path(@customer), class: "btn btn-info btn-push" %>
   </div>
 
 <!--フォロー機能↓-->
   <div class="profile__desc mt-3">
   <% if @customer != current_customer && customer_signed_in? %>
     <% if  @customer.followed_by?(current_customer) %>
-    <%= link_to "フォローを解除", customer_relationship_path(@customer),method: :delete, class: "btn btn-outline-success btn-push" %>
+    <%= link_to "フォローを解除", customer_relationship_path(@customer),method: :delete, class: "btn btn-success btn-push" %>
     <% else %>
-    <%= link_to "フォローする", customer_relationships_path(@customer),method: :post, class: "btn btn-outline-success btn-push" %>
+    <%= link_to "フォローする", customer_relationships_path(@customer),method: :post, class: "btn btn-success btn-push" %>
     <% end %>
   <% end %>
   </div>
@@ -26,8 +26,8 @@
 <!--編集/お気に入り機能-->
 <div class="profile__desc mt-1">
 <% if @customer == current_customer %>
-  <%= link_to "プロフィール編集", edit_customer_registration_path(@customer), class: "btn btn-outline-success btn-push" %>
-  <%= link_to "お気に入り一覧", customer_favorites_path(current_customer), class: "btn btn-outline-success btn-push" %>
+  <%= link_to "プロフィール編集", edit_customer_registration_path(@customer), class: "btn btn-success btn-push" %>
+  <%= link_to "お気に入り一覧", customer_favorites_path(current_customer), class: "btn btn-success btn-push" %>
 <% end %>
 </div>
 </div>
