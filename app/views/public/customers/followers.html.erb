@@ -6,7 +6,8 @@
   <tr>
     <% @customers.each do |customer| %>
     <td>
-      <%= link_to customer_path(customer), class: "nav-link" do %>
+      <%= link_to customer_path(customer), class: "nav-link text-center" do %>
+      <%= attachment_image_tag customer, :profile_image, format: 'jpeg', fallback: "noimage.png", class: "profile_img" %><br />
       <%= customer.name %>
       <% end %>
     </td>

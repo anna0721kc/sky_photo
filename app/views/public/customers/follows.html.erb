@@ -3,25 +3,26 @@
   <%= @customer.name %>さんのフォローリスト
 </h3>
 
-<table>
-  <% @customers.each do |customer| %>
-  <tr>
-    <td>
-      <%= link_to customer_path(customer), class: "nav-link" do %>
-      <%= attachment_image_tag customer, :profile_image, format: 'jpeg', fallback: "noimage.png", class: "profile_img" %><br />
-      <%= customer.name %>
+      <% @customers.each do |customer| %>
+      <ul class="row">
+        <li class="col d-flex align-items-center px-3 py-3">
+          <%= link_to customer_path(customer) do %>
+          <%= attachment_image_tag customer, :profile_image, format: 'jpeg', fallback: "noimage.png", class: "profile_img" %>
+          <% end %>
+          <div class="costomer-name mx-5">
+            <%= customer.name %>
+          </div>
+          <div class="costomer-follow mx-5">
+            <% if current_customer != customer %>
+              <% if customer.followed_by?(current_customer) %>
+                <%=link_to "フォロー中", customer_relationship_path(customer.id), method: :delete, "data-confirm" => "フォロー解除しますか？" %>
+              <% else %>
+                <%=link_to "フォローする", customer_relationships_path(customer.id), method: :post %>
+              <% end %>
+           <% end %>
+           </div>
+           </li>
+           </ul>
       <% end %>
-    </td>
-    <td>
-      <% if current_customer != customer %>
-      <% if customer.followed_by?(current_customer) %>
-      <%=link_to "フォロー中", customer_relationship_path(customer.id), method: :delete, "data-confirm" => "フォロー解除しますか？", class: "nav-link" %>
-      <% else %>
-      <%=link_to "フォローする", customer_relationships_path(customer.id), method: :post, class: "nav-link" %>
-      <% end %>
-    <% end %>
-    </td>
-  </tr>
-  <% end %>
-</table>
+
 </div>
