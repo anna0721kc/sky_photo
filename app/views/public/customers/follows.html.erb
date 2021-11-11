@@ -1,23 +1,22 @@
-<div class= "container my-5">
+<div class= "container my-5 py-3 shadow rounded">
 <h3>
   <%= @customer.name %>さんのフォローリスト
 </h3>
-
       <% @customers.each do |customer| %>
       <ul class="row">
         <li class="col d-flex align-items-center px-3 py-3">
           <%= link_to customer_path(customer) do %>
           <%= attachment_image_tag customer, :profile_image, format: 'jpeg', fallback: "noimage.png", class: "profile_img" %>
           <% end %>
-          <div class="costomer-name mx-5">
+          <div class="text-center w-25">
             <%= customer.name %>
           </div>
-          <div class="costomer-follow mx-5">
+          <div class="text-center w-25">
             <% if current_customer != customer %>
               <% if customer.followed_by?(current_customer) %>
-                <%=link_to "フォロー中", customer_relationship_path(customer.id), method: :delete, "data-confirm" => "フォロー解除しますか？" %>
+                <%=link_to "フォロー中", customer_relationship_path(customer.id), method: :delete, class: "btn btn-outline-primary", "data-confirm" => "フォロー解除しますか？" %>
               <% else %>
-                <%=link_to "フォローする", customer_relationships_path(customer.id), method: :post %>
+                <%=link_to "フォローする", customer_relationships_path(customer.id), class: "btn btn-outline-primary", method: :post %>
               <% end %>
            <% end %>
            </div>

@@ -5,7 +5,7 @@
       <h2 class="my-3">Photo</h2>
       <p><%= simple_format(@photo.introduction) %></p>
       <p>撮影場所：<%= @photo.address %></p>
-      <%= attachment_image_tag @photo, :image, :fill, 500, 400, format: 'jpeg' %>
+      <%= attachment_image_tag @photo, :image, :fill, 00, 400, format: 'jpeg' %>
 
 <!--gonを読み込み-->
 <%= include_gon %>
