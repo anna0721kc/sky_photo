@@ -24,4 +24,15 @@ class Public::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
+
+  private
+    def after_sign_in_path_for(resource)
+      if resource.is_deleted == false#(resource)に入った値の中で、is_enabledがfalseだったら、
+      sign_out resource
+      root_path
+      else
+       customer_path(current_customer)
+      end
+    end
+
 end

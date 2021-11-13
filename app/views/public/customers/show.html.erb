@@ -34,7 +34,7 @@
 
 <!--自分の写真一覧-->
 <div class="container mt-5">
-  <h3 class>post photos</h3>
+  <h3 class="photos">post photos</h3>
   <% @photos.each do |photo| %>
     <%= link_to photo_path(photo) do %>
     <%= attachment_image_tag photo, :image, :fill, 550, 400, format: 'jpeg',class: "mx-auto d-block" %>

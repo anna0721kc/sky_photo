@@ -1,6 +1,7 @@
 <div class= "container my-5 py-3 shadow rounded">
-<h3>
-  <%= @customer.name %>さんのフォロワーリスト
+<h3 class="follow">
+  <%#= @customer.name %>
+  Followers
 </h3>
     <% @customers.each do |customer| %>
     <ul class="row">
@@ -23,4 +24,5 @@
       </li>
      </ul>
 <% end %>
+<%= paginate @customers %>
 </div>

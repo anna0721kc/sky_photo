@@ -15,7 +15,7 @@ class Public::PhotosController < ApplicationController
   end
 
   def index
-    @photos = Photo.all
+    @photos = Photo.page(params[:page]).per(10)
   end
 
   def show

@@ -70,3 +70,4 @@ gem "gmaps4rails"#GoogleMapを作成
 gem "geocoder"#地名から緯度経度に変換
 gem "gon"#railsでJSを使えるようにする
 gem "dotenv-rails"#GoogleMapAPIのkeyを隠す
+gem 'kaminari'

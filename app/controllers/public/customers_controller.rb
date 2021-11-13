@@ -9,12 +9,12 @@ class Public::CustomersController < ApplicationController
 
   def follows
     @customer = Customer.find(params[:id])
-    @customers = @customer.followings
+    @customers = @customer.followings.page(params[:page]).per(5)
   end
 
   def followers
     @customer = Customer.find(params[:id])
-    @customers = @customer.followers
+    @customers = @customer.followers.page(params[:page]).per(5)
   end
 
   def unsubscribe
@@ -32,4 +32,5 @@ class Public::CustomersController < ApplicationController
   def customer_params
     params.require(:customer).permit(:name, :profile_image, :introduction)
   end
+
 end

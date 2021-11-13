@@ -23,10 +23,10 @@ Rails.application.routes.draw do
       get :followers, on: :member
     end
 
-
     resources :photos do
       resources :favorites, only: [:create, :destroy]
     end
+
   end
   #管理者側
   namespace :admin do

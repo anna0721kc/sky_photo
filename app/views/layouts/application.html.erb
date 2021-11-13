@@ -13,21 +13,21 @@
     <header>
       <div class="rogo">
         <%= link_to root_path do %>
-        <%= image_tag 'rogo4.png', size: "195x120" %>
+        <%= image_tag 'rogo4.png', size: "160x100" %>
         <% end %>
       </div>
-    </header>
+    <!--</header>-->
     <div id="navArea">
-      <nav>
+      <nav class="menu">
       <div class="inner text-center">
         <ul>
           <% if admin_signed_in? %><!--管理者でログイン-->
-          <%= image_tag 'rogo4.png', size: "190x125" %>
+          <%= image_tag 'rogo4.png', size: "160x100" %>
           <li><%= link_to "ユーザ一覧", admin_customers_path %></li>
           <li><%= link_to "logout", destroy_admin_session_path, method: :delete %></li>
 
           <% elsif customer_signed_in? %><!--会員でログインしていたら-->
-          <%= image_tag 'rogo4.png', size: "190x125" %>
+          <%= image_tag 'rogo4.png', size: "160x100" %>
           <li>
           <%= link_to about_path do %>
           <i class="fas fa-question"> About</i>
@@ -55,7 +55,7 @@
       </li>
 
       <% else %><!--ログイン前の画面を表示-->
-      <%= image_tag 'skyrogo2.jpg', size: "190x125" %>
+      <%= image_tag 'skyrogo2.jpg', size: "160x100" %>
       <li>
         <%= link_to about_path do %>
         <i class="fas fa-question"> About</i>
@@ -89,22 +89,23 @@
 <div id="mask"></div>
 <!--ボタンここまで-->
 </div>
+</header>
 <main>
 <%= yield %>
 </main>
 
 <script>
   (function($) {
-  var $body   = $('body');
+  var $body   = $('body');//クラスを付けている
   var $btn   = $('.toggle_btn');
   var $mask  = $('#mask');
   var open   = 'open'; // class
   // menu open close
-  $btn.on( 'click', function() {
-    if ( ! $body.hasClass( open ) ) {
+  $btn.on( 'click', function() {//jQueryのhasClassメソッド。
+    if ( ! $body.hasClass( open ) ) {//クリックした時openというクラスが付いていなければ付ける。
       $body.addClass( open );
     } else {
-      $body.removeClass( open );
+      $body.removeClass( open );//クリックした時openというクラスが付いていたら消す。
     }
   });
   // mask close
