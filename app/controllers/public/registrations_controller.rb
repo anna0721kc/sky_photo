@@ -82,8 +82,8 @@ class Public::RegistrationsController < Devise::RegistrationsController
   end
 
   private
+
   def customer_params
     params.require(:customer).permit(:name, :profile_image, :introduction)
   end
-
 end

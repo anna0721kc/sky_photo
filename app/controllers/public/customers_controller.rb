@@ -1,4 +1,3 @@
-#会員側／customerコントローラ
 class Public::CustomersController < ApplicationController
   before_action :authenticate_customer!
 
@@ -29,6 +28,7 @@ class Public::CustomersController < ApplicationController
   end
 
   private
+
   def customer_params
     params.require(:customer).permit(:name, :profile_image, :introduction)
   end

@@ -1,0 +1,18 @@
+inherit_from:
+  - .rubocop_airbnb.yml
+
+# Rails用に最適化
+rails:
+  Enabled: true
+ # rubocopで検証したくないフォルダを指定
+AllCops:
+  Exclude:
+    - 'db/**/*'
+    - 'bin/*'
+    - 'config/environments/*'
+    - 'config/application.rb'
+    - 'config/initializers/*'
+    - 'config/spring.rb'
+    - 'lib/tasks/*'
+    - 'vendor/**/*'
+    - 'path/ruby'

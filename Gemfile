@@ -66,13 +66,14 @@ gem 'jquery-rails'
 gem 'font-awesome-sass', '~> 5.13'
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
-gem "gmaps4rails"#GoogleMapを作成
-gem "geocoder"#地名から緯度経度に変換
-gem "gon"#railsでJSを使えるようにする
-gem "dotenv-rails"#GoogleMapAPIのkeyを隠す
-gem 'kaminari'#ページネーション
+gem "gmaps4rails" # GoogleMapを作成
+gem "geocoder" # 地名から緯度経度に変換
+gem "gon" # railsでJSを使えるようにする
+gem "dotenv-rails" # GoogleMapAPIのkeyを隠す
+gem 'kaminari' # ページネーション
 gem 'pry-byebug', group: :development
 
 group :development do
-  gem 'bullet'#N+1問題検出
+  gem 'bullet' # N+1問題検出
+  gem 'rubocop-airbnb' # 書かれたコードが、Rubyのコーディング規約に沿っているかを自動的に確認してくれるgem
 end

@@ -1,16 +1,17 @@
 class Public::PhotosController < ApplicationController
-#「before_action :authenticate_customer!」は不要
+ # before_action :authenticate_customer!は不要
+
   def new
     @photo = Photo.new
   end
 
   def create
     @photo = Photo.new(photo_params)
-    @photo.customer_id = current_customer.id#ログイン後に投稿可
+    @photo.customer_id = current_customer.id # ログイン後に投稿可
     if @photo.save
       redirect_to photo_path(@photo)
     else
-      render template: 'public/photos/new'#ディレクトリ指定する
+      render template: 'public/photos/new' # ディレクトリ指定する
     end
   end
 
@@ -26,7 +27,7 @@ class Public::PhotosController < ApplicationController
   def edit
     @photo = Photo.find(params[:id])
     if @photo.customer_id != current_customer.id
-    redirect_to photo_path(@photo)
+      redirect_to photo_path(@photo)
     end
   end
 
@@ -35,7 +36,7 @@ class Public::PhotosController < ApplicationController
     if @photo.update(photo_params)
       redirect_to photo_path(@photo)
     else
-      render:edit
+      render :edit
     end
   end
 
@@ -46,6 +47,7 @@ class Public::PhotosController < ApplicationController
   end
 
   private
+
   def photo_params
     params.require(:photo).permit(:image, :address, :latitude, :longitude, :introduction)
   end

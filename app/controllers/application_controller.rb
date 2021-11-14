@@ -14,11 +14,12 @@ class ApplicationController < ActionController::Base
     if resource == :admin
       new_admin_session_path
     else
-      root_path#(=new_customer_session_path)
+      root_path # (=new_customer_session_path)
     end
   end
 
   protected
+
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
   end

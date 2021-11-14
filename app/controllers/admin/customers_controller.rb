@@ -1,4 +1,3 @@
-#管理者側／customerコントローラ
 class Admin::CustomersController < ApplicationController
   before_action :authenticate_admin!
   def index
@@ -24,6 +23,7 @@ class Admin::CustomersController < ApplicationController
   end
 
   private
+
   def customer_params
     params.require(:customer).permit(:name, :email, :encrypted_password, :is_deleted)
   end
