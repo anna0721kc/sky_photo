@@ -4,7 +4,7 @@ class Public::CustomersController < ApplicationController
 
   def show
     @customer = Customer.find(params[:id])
-    @photos = @customer.photos
+    @photos = @customer.photos.page(params[:page]).per(5)
   end
 
   def follows

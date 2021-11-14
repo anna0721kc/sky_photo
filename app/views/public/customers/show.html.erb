@@ -40,4 +40,5 @@
     <%= attachment_image_tag photo, :image, :fill, 550, 400, format: 'jpeg',class: "mx-auto d-block" %>
     <% end %>
   <% end %>
+  <%= paginate @photos %>
 </div>

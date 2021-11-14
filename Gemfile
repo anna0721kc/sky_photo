@@ -71,7 +71,8 @@ gem "geocoder"#地名から緯度経度に変換
 gem "gon"#railsでJSを使えるようにする
 gem "dotenv-rails"#GoogleMapAPIのkeyを隠す
 gem 'kaminari'#ページネーション
+gem 'pry-byebug', group: :development
 
 group :development do
-  gem 'bullet'#N+1問題
+  gem 'bullet'#N+1問題検出
 end
