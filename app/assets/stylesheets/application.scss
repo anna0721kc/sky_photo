@@ -58,6 +58,9 @@ header {
   transition: all 0.5s;
   z-index: 3;
   opacity: 0;
+  background-image: image-url('2618430.jpg');
+  background-color: rgba(255,255,255,0.6);
+  background-blend-mode: lighten;
 }
 .open .menu {
   left: 0;
@@ -86,7 +89,7 @@ header {
   transition-duration: 0.2s;
 }
 .menu .inner ul li a:hover {
-  background: #e4e4e4;
+  background: #B9D9D9;
 }
 @media screen and (max-width: 767px) {
   .menu {
@@ -195,7 +198,7 @@ body {
   font-family: "Open Sans", sans-serif;
   overflow: scroll;
   background-image: image-url('2618430.jpg');
-  background-color: rgba(255,255,255,0.7);
+  background-color: rgba(255,255,255,0.5);
   background-blend-mode: lighten;
 }
 /*=====================

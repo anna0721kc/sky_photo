@@ -17,69 +17,75 @@
         <% end %>
       </div>
     <!--</header>-->
-    <div id="navArea">
-      <nav class="menu">
-      <div class="inner text-center">
-        <ul>
-          <% if admin_signed_in? %><!--管理者でログイン-->
-          <%= image_tag 'rogo4.png', size: "160x100" %>
-          <li><%= link_to "ユーザ一覧", admin_customers_path %></li>
-          <li><%= link_to "logout", destroy_admin_session_path, method: :delete %></li>
+      <div id="navArea">
+        <nav class="menu">
+          <div class="inner text-center">
+            <ul>
+              <% if admin_signed_in? %><!--管理者でログイン-->
+                <%= link_to admin_customers_path do %>
+                <%= image_tag 'rogo4.png', size: "160x100" %>
+                <% end %>
+                  <li><%= link_to "ユーザ一覧", admin_customers_path %></li>
+                  <li><%= link_to "logout", destroy_admin_session_path, method: :delete %></li>
 
-          <% elsif customer_signed_in? %><!--会員でログインしていたら-->
-          <%= image_tag 'rogo4.png', size: "160x100" %>
-          <li>
-          <%= link_to about_path do %>
-          <i class="fas fa-question"> About</i>
-          <% end %>
-          </li>
-          <li>
-           <%= link_to photos_path do %>
-        <i class="fas fa-images"> Gallery</i>
-        <% end %>
-      </li>
-      <li>
-        <%= link_to new_photo_path do %>
-        <i class="fas fa-camera-retro"> New photo</i>
-        <% end %>
-      </li>
-      <li>
-        <%= link_to customer_path(current_customer) do %>
-        <i class="fas fa-user"> My page</i>
-        <% end %>
-      </li>
-      <li>
-        <%= link_to destroy_customer_session_path, method: :delete do %>
-        <i class="fas fa-sign-out-alt"> Log out</i>
-        <% end %>
-      </li>
+              <% elsif customer_signed_in? %><!--会員でログインしていたら-->
+                <%= link_to root_path do %>
+                <%= image_tag 'rogo4.png', size: "160x100" %>
+                <% end %>
+                  <li>
+                  <%= link_to about_path do %>
+                  <i class="fas fa-question"> About</i>
+                  <% end %>
+                  </li>
+                  <li>
+                   <%= link_to photos_path do %>
+                   <i class="fas fa-images"> Gallery</i>
+                   <% end %>
+                   </li>
+                   <li>
+                     <%= link_to new_photo_path do %>
+                     <i class="fas fa-camera-retro"> New photo</i>
+                     <% end %>
+                    </li>
+                    <li>
+                    <%= link_to customer_path(current_customer) do %>
+                    <i class="fas fa-user"> My page</i>
+                    <% end %>
+                    </li>
+                    <li>
+                    <%= link_to destroy_customer_session_path, method: :delete do %>
+                    <i class="fas fa-sign-out-alt"> Log out</i>
+                    <% end %>
+                    </li>
 
-      <% else %><!--ログイン前の画面を表示-->
-      <%= image_tag 'skyrogo2.jpg', size: "160x100" %>
-      <li>
-        <%= link_to about_path do %>
-        <i class="fas fa-question"> About</i>
-        <% end %>
-      </li>
-      <li>
-        <%= link_to photos_path do %>
-        <i class="fas fa-images"> Gallery</i>
-        <% end %>
-      </li>
-      <li>
-        <%= link_to new_customer_registration_path do %>
-        <i class="fas fa-user-plus"> New member</i>
-        <% end %>
-      </li>
-      <li>
-        <%= link_to new_customer_session_path do %>
-        <i class="fas fa-sign-in-alt"> Log in</i>
-        <% end %>
-      </li>
-      <% end %>
-    </ul>
-  </div>
-</nav>
+              <% else %><!--ログイン前の画面を表示-->
+                <%= link_to root_path do %>
+                <%= image_tag 'rogo4.png', size: "160x100" %>
+                <% end %>
+                    <li>
+                      <%= link_to about_path do %>
+                      <i class="fas fa-question"> About</i>
+                      <% end %>
+                    </li>
+                    <li>
+                      <%= link_to photos_path do %>
+                      <i class="fas fa-images"> Gallery</i>
+                      <% end %>
+                    </li>
+                    <li>
+                      <%= link_to new_customer_registration_path do %>
+                      <i class="fas fa-user-plus"> New member</i>
+                      <% end %>
+                    </li>
+                    <li>
+                      <%= link_to new_customer_session_path do %>
+                      <i class="fas fa-sign-in-alt"> Log in</i>
+                      <% end %>
+                    </li>
+              <% end %>
+            </ul>
+          </div>
+        </nav>
 <!--ボタン-->
 <div class="toggle_btn">
   <span></span>
@@ -89,7 +95,7 @@
 <div id="mask"></div>
 <!--ボタンここまで-->
 </div>
-</header>
+    </header>
 <main>
 <%= yield %>
 </main>
