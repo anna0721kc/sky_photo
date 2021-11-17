@@ -1,5 +1,5 @@
 class Public::PhotosController < ApplicationController
- # before_action :authenticate_customer!は不要
+  before_action :authenticate_customer!,only: [:new, :create, :edit, :update, :destroy]
 
   def new
     @photo = Photo.new
@@ -30,6 +30,7 @@ class Public::PhotosController < ApplicationController
       redirect_to photo_path(@photo)
     end
   end
+
 
   def update
     @photo = Photo.find(params[:id])

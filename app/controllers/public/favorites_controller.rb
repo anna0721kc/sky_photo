@@ -17,6 +17,5 @@ class Public::FavoritesController < ApplicationController
   def index
     favorites = Favorite.where(customer_id: current_customer.id).pluck(:photo_id)
     @favorite_list = Photo.find(favorites)
-  end
-   # .pluck：引数に指定したカラムの値を配列で返してくれるメソッド
+  end # .pluck：引数に指定したカラムの値を配列で返してくれるメソッド
 end

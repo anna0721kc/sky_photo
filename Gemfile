@@ -56,6 +56,10 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
+  gem 'rspec-rails'
+  gem 'capybara', '>= 2.15' # viewページテスト
+  gem "factory_bot_rails" # サンプルデータを作成できるテストツール
+  gem 'faker' # ダミーデータを自動生成してくれるもの
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -76,4 +80,5 @@ gem 'pry-byebug', group: :development
 group :development do
   gem 'bullet' # N+1問題検出
   gem 'rubocop-airbnb' # 書かれたコードが、Rubyのコーディング規約に沿っているかを自動的に確認してくれるgem
+
 end
