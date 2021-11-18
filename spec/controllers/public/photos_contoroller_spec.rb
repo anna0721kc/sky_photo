@@ -2,7 +2,8 @@ require 'rails_helper'
 RSpec.describe Public::PhotosController, type: :controller do
   before do
       @customer = FactoryBot.create(:customer)
-    end
+  end
+
   describe "#index" do
     context '写真投稿一覧のテスト' do
     # 正常なレスポンスか？
@@ -41,10 +42,6 @@ RSpec.describe Public::PhotosController, type: :controller do
     let(:image_path) { File.join(Rails.root, '/spec/photos/img/image14.jpg') }
     let(:image) { Rack::Test::UploadedFile.new(image_path) }
     context "投稿のテスト" do
-      # before do
-      #   binding.pry
-      # @photo = FactoryBot.create(:photo)
-      # end
       it "保存できるか？" do
         sign_in @customer
         expect {
@@ -53,12 +50,48 @@ RSpec.describe Public::PhotosController, type: :controller do
               latitude: "35.6895014",
               longitude: "139.6917337",
               customer_id: @customer.id,
-              # image_id: Rack::Test::UploadedFile.new("#{Rails.root}/spec/photos/img/image14.jpg", "image/jpeg"),
               image: image,
               address: "東京都新宿区西新宿2-8-1"
             }
           }
         }.to change(@customer.photos, :count).by(1)
+      end
+    end
+  end
+
+  describe "#show" do
+    let(:image_path) { File.join(Rails.root, '/spec/photos/img/image14.jpg') }
+    let(:image) { Rack::Test::UploadedFile.new(image_path) }
+    context '写真詳細のテスト' do
+      it "showページへアクセスできるか？" do
+        # get :show, params: {id: @photo.id}
+        # expect(response).to be_success
+        expect {
+          get :show, params: {
+            photo: {
+              latitude: "35.6895014",
+              longitude: "139.6917337",
+              customer_id: @customer.id,
+              image: image,
+              address: "東京都新宿区西新宿2-8-1"
+            }
+          }
+        }
+      end
+    # 200番台のレスポンスが返ってきているか？
+      it " 200番台が返ってくるか？" do
+        expect {
+          get :show, params: {
+            photo: {
+              latitude: "35.6895014",
+              longitude: "139.6917337",
+              customer_id: @customer.id,
+              image: image,
+              address: "東京都新宿区西新宿2-8-1"
+            }
+          }
+        }
+        expect(response).to have_http_status "200"
       end
     end
   end
