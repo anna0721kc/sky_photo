@@ -39,6 +39,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'pry-byebug'
 end
 
 group :development do
@@ -75,7 +76,8 @@ gem "geocoder" # 地名から緯度経度に変換
 gem "gon" # railsでJSを使えるようにする
 gem "dotenv-rails" # GoogleMapAPIのkeyを隠す
 gem 'kaminari' # ページネーション
-gem 'pry-byebug', group: :development
+
+gem 'rails-i18n' # エラー文を日本語にするため
 
 group :development do
   gem 'bullet' # N+1問題検出
