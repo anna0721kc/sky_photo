@@ -50,7 +50,7 @@ RSpec.describe Public::PhotosController, type: :controller do
               latitude: "35.6895014",
               longitude: "139.6917337",
               customer_id: @customer.id,
-              image: image,
+              image: image, # 43行目のimage
               address: "東京都新宿区西新宿2-8-1"
             }
           }
