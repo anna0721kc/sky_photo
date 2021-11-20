@@ -82,5 +82,7 @@ gem 'rails-i18n' # エラー文を日本語にするため
 group :development do
   gem 'bullet' # N+1問題検出
   gem 'rubocop-airbnb' # 書かれたコードが、Rubyのコーディング規約に沿っているかを自動的に確認してくれるgem
-
+end
+group :production do
+  gem 'mysql2'
 end
