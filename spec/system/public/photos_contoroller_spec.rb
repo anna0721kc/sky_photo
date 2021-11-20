@@ -2,6 +2,7 @@ require 'rails_helper'
 RSpec.describe Public::PhotosController, type: :controller do
   before do
       @customer = FactoryBot.create(:customer)
+      # bybug
   end
 
   describe "#index" do
@@ -50,7 +51,7 @@ RSpec.describe Public::PhotosController, type: :controller do
               latitude: "35.6895014",
               longitude: "139.6917337",
               customer_id: @customer.id,
-              image: image, # 43行目のimage
+              image: image, # 43行目のlet(:image)
               address: "東京都新宿区西新宿2-8-1"
             }
           }
@@ -95,4 +96,25 @@ RSpec.describe Public::PhotosController, type: :controller do
       end
     end
   end
+
+  # describe "#edit" do
+  #   context '写真投稿ページのテスト' do
+  #     it "正常にアクセスできるか" do
+  #       sign_in @customer
+  #       get :edit, params: {id: @photo.id}
+  #     expect(response).to be_success
+  #   end
+  #     it "200番台が返ってくるか" do
+  #       sign_in @customer
+  #       get :edit, params: {id: @photo.id}
+  #       expect(response).to have_http_status "200"
+  #     end
+  #     it "ログイン前だとnewページへのアクセスをはじくか" do
+  #       get :edit
+  #       expect(response).to_not be_success # 正常にレスポンスが返ってきていないか？
+  #     end
+  #   end
+  # end
+
+
 end
