@@ -6,7 +6,7 @@ class CreatePhotos < ActiveRecord::Migration[5.2]
       t.string :address
       t.float :latitude
       t.float :longitude
-      t.text :introduction,   null: false, default: "未入力"
+      t.text :introduction
       t.timestamps
     end
   end
