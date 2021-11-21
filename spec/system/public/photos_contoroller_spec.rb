@@ -10,7 +10,7 @@ RSpec.describe Public::PhotosController, type: :controller do
     # 正常なレスポンスか？
       it "indexページへアクセスできるか？" do
         get :index
-        expect(response).to be_success
+        expect(response).to be_successful
       end
     # 200番台のレスポンスが返ってきているか？
       it " 200番台が返ってくるか？" do
@@ -25,7 +25,7 @@ RSpec.describe Public::PhotosController, type: :controller do
       it "正常にアクセスできるか" do
         sign_in @customer
         get :new
-      expect(response).to be_success
+      expect(response).to be_successful
     end
       it "200番台が返ってくるか" do
         sign_in @customer
@@ -34,7 +34,7 @@ RSpec.describe Public::PhotosController, type: :controller do
       end
       it "ログイン前だとnewページへのアクセスをはじくか" do
         get :new
-        expect(response).to_not be_success # 正常にレスポンスが返ってきていないか？
+        expect(response).to_not be_successful # 正常にレスポンスが返ってきていないか？
       end
     end
   end
@@ -97,24 +97,78 @@ RSpec.describe Public::PhotosController, type: :controller do
     end
   end
 
-  # describe "#edit" do
-  #   context '写真投稿ページのテスト' do
-  #     it "正常にアクセスできるか" do
-  #       sign_in @customer
-  #       get :edit, params: {id: @photo.id}
-  #     expect(response).to be_success
-  #   end
-  #     it "200番台が返ってくるか" do
-  #       sign_in @customer
-  #       get :edit, params: {id: @photo.id}
-  #       expect(response).to have_http_status "200"
-  #     end
-  #     it "ログイン前だとnewページへのアクセスをはじくか" do
-  #       get :edit
-  #       expect(response).to_not be_success # 正常にレスポンスが返ってきていないか？
-  #     end
-  #   end
-  # end
 
+  describe "#edit" do
+    let(:image_path) { File.join(Rails.root, '/spec/photos/img/image14.jpg') }
+    let(:image) { Rack::Test::UploadedFile.new(image_path) }
+    context '写真編集のテスト' do
+      it "editページへアクセスできるか？" do
+        # get :show, params: {id: @photo.id}
+        # expect(response).to be_success
+        expect {
+          get :edit, params: {
+            photo: {
+              latitude: "35.6895014",
+              longitude: "139.6917337",
+              customer_id: @customer.id,
+              image: image,
+              address: "東京都新宿区西新宿2-8-1"
+            }
+          }
+        }
+      end
+    # 200番台のレスポンスが返ってきているか？
+      it " 200番台が返ってくるか？" do
+        expect {
+          get :edit, params: {
+            photo: {
+              latitude: "35.6895014",
+              longitude: "139.6917337",
+              customer_id: @customer.id,
+              image: image,
+              address: "東京都新宿区西新宿2-8-1"
+            }
+          }
+        }
+        expect(response).to have_http_status "200"
+      end
+    end
+  end
 
+  describe "#update" do
+    let(:image_path) { File.join(Rails.root, '/spec/photos/img/image14.jpg') }
+    let(:image) { Rack::Test::UploadedFile.new(image_path) }
+    context '写真編集処理のテスト' do
+      it "updateできるか？" do
+        # get :show, params: {id: @photo.id}
+        # expect(response).to be_success
+        expect {
+          get :update, params: {
+            photo: {
+              latitude: "35.6895014",
+              longitude: "139.6917337",
+              customer_id: @customer.id,
+              image: image,
+              address: "東京都新宿区西新宿2-8-1"
+            }
+          }
+        }
+      end
+    # 200番台のレスポンスが返ってきているか？
+      it " 200番台が返ってくるか？" do
+        expect {
+          get :update, params: {
+            photo: {
+              latitude: "35.6895014",
+              longitude: "139.6917337",
+              customer_id: @customer.id,
+              image: image,
+              address: "東京都新宿区西新宿2-8-1"
+            }
+          }
+        }
+        expect(response).to have_http_status "200"
+      end
+    end
+  end
 end
