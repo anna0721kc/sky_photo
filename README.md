@@ -57,4 +57,9 @@ https://docs.google.com/spreadsheets/d/1ysZtek3YoSGrBr0ZweL0tgrD_7yo_3kRglhS9Qbp
 - IDE：Cloud9
 
 ## 使用素材
-*  未定
+- 写真素材
+  - ぱくたそ https://www.pakutaso.com/
+  - O-DAN https://o-dan.net/ja/
+  - morguefile https://morguefile.com/
+ - ロゴ作成
+  - designevo https://www.designevo.com/
