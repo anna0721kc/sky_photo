@@ -4,7 +4,6 @@ RSpec.describe Public::PhotosController, type: :controller do
       @customer = FactoryBot.create(:customer)
       # bybug
   end
-
   describe "#index" do
     context '写真投稿一覧のテスト' do
     # 正常なレスポンスか？
