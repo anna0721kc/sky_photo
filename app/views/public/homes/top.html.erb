@@ -50,19 +50,19 @@
   <script>
     var swiper = new Swiper('.swiper-container', {
       spaceBetween: 60,
-      effect: "fade",
+      effect: "fade",//スライドの切り替え
       autoplay: {
-        delay: 5000,
-        disableOnInteraction: false,
+        delay: 5000,//スライドの速度 1000=1秒
+        disableOnInteraction: false,//スライダーを操作自動再生を止めない
       },
       pagination: {
         el: ".swiper-pagination",
-        type: "bullets",
-        clickable: true,
+        type: "bullets",//ページネーションの種類
+        clickable: true,//ページネーションのクリック
       },
       navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
+        nextEl: '.swiper-button-next',//遷移ボタン進む
+        prevEl: '.swiper-button-prev',//遷移ボタン戻る
       },
     });
   </script>
